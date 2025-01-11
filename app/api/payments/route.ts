@@ -23,10 +23,7 @@ export async function POST(req: Request) {
 			user_id,
 		});
 
-		return NextResponse.json({
-			message: 'Payment created successfully',
-			data: newPayment,
-		});
+		return NextResponse.json(newPayment);
 	} catch (error) {
 		return NextResponse.json(
 			{ message: 'Something went wrong', error },

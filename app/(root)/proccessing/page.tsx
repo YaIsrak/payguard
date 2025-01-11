@@ -10,7 +10,7 @@ export default function ProccessingPage() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
-	const amount = Number(searchParams.get('amount'));
+	const amount = searchParams.get('amount');
 	const title = searchParams.get('title');
 
 	useEffect(() => {
