@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	description: 'Payment Tracking and Verification System',
 };
 
-export default function RootLayout({
+export default function MainLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;

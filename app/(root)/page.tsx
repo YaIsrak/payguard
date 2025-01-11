@@ -1,19 +1,3 @@
-import { SignInButton, SignOutButton } from '@clerk/nextjs';
-import { currentUser } from '@clerk/nextjs/server';
-
-export default async function Home() {
-	const user = await currentUser();
-
-	return (
-		<div>
-			Hello world
-			<SignInButton>
-				<button>Sign in</button>
-			</SignInButton>
-			<SignOutButton>
-				<button>Sign out</button>
-			</SignOutButton>
-			<pre>{JSON.stringify(user, null, 2)}</pre>
-		</div>
-	);
+export default function Home() {
+	return <main className='container mx-auto px-2 md:px-4'>sdsd</main>;
 }
