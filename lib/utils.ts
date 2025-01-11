@@ -1,5 +1,3 @@
-import { Roles } from '@/types/globals';
-import { auth } from '@clerk/nextjs/server';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -7,16 +5,15 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-export const checkRole = async (role: Roles) => {
-	const { sessionClaims } = await auth();
-	return sessionClaims?.metadata.role === role;
-};
-
 export const env = {
 	MONGO_URI: process.env.MONGO_URI as string,
 	CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY as string,
 	NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env
 		.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string,
+	BASE_URL: (process.env.BASE_URL as string) || 'http://localhost:3000',
+	NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env
+		.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
+	STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY as string,
 };
 
 interface MongoDBObject {
@@ -47,4 +44,8 @@ export const replaceMongoIdInObject = (obj: any) => {
 	const plainObject = JSON.parse(JSON.stringify(obj));
 	const { _id, ...updatedObj } = plainObject;
 	return { id: _id.toString(), ...updatedObj };
+};
+
+export const convertToSubCurrency = (amount: number, factor: number = 100) => {
+	return Math.round(amount * factor);
 };
