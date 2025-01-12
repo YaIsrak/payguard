@@ -1,5 +1,6 @@
 import { connectDB } from '@/lib/db';
 import { Payment } from '@/lib/models/payment.model';
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 
 export async function PUT(
@@ -27,6 +28,8 @@ export async function PUT(
 			{ status },
 			{ new: true },
 		);
+
+		revalidatePath('/');
 		return NextResponse.json(updatedPayment);
 	} catch (error) {
 		return NextResponse.json(
@@ -51,6 +54,8 @@ export async function DELETE(
 	try {
 		await connectDB();
 		const deletedPayment = await Payment.findByIdAndDelete(id);
+
+		revalidatePath('/');
 		return NextResponse.json(deletedPayment);
 	} catch (error) {
 		return NextResponse.json(

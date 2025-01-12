@@ -9,6 +9,10 @@ const documentSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	payment_id: {
+		type: String,
+		required: true,
+	},
 	status: {
 		type: String,
 		enum: ['pending', 'approved', 'rejected'],

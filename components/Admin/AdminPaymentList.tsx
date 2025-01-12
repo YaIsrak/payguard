@@ -5,14 +5,12 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table';
-import { getPaymentsByUserId } from '@/lib/query';
+import { getAllPayments } from '@/lib/query';
 import { Payment } from '@/types/types';
-import { currentUser } from '@clerk/nextjs/server';
-import PaymentItem from './PaymentItem';
+import AdminPaymentItem from './AdminPaymentItem';
 
-export default async function PaymentsList() {
-	const user = await currentUser();
-	const payments: Payment[] = await getPaymentsByUserId(user?.id as string);
+export default async function AdminPaymentsList() {
+	const payments: Payment[] = await getAllPayments();
 
 	return (
 		<div className='mt-4'>
@@ -24,11 +22,12 @@ export default async function PaymentsList() {
 						<TableHead>Amount</TableHead>
 						<TableHead>Status</TableHead>
 						<TableHead>Document</TableHead>
+						<TableHead>Actions</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
 					{payments?.map((payment) => (
-						<PaymentItem
+						<AdminPaymentItem
 							key={payment.id}
 							payment={payment}
 						/>

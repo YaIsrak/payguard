@@ -8,3 +8,12 @@ export interface Payment {
 	user_id: string;
 	created_at: Date;
 }
+
+export interface Document {
+	id: string;
+	user_id: string;
+	file_url: string;
+	payment_id: string;
+	status: Status;
+	uploaded_at: Date;
+}
