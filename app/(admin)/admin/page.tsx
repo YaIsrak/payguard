@@ -5,8 +5,8 @@ import { Suspense } from 'react';
 export default async function AdminPage() {
 	return (
 		<main className='container mx-auto px-2 md:px-4'>
-			<div className='py-[15vmin]'>
-				{/* Main */}
+			<div className='py-[5vmin]'>
+				{/* Table */}
 				<div className='p-4 border border-gray-300 rounded-xl'>
 					<div>
 						<h1 className='text-2xl font-semibold'>Payment Requests</h1>

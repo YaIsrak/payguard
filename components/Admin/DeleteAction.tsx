@@ -1,3 +1,5 @@
+'use client';
+
 import { Payment } from '@/types/types';
 import axios from 'axios';
 import { Loader, Trash2 } from 'lucide-react';
