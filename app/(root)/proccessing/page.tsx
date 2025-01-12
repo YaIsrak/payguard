@@ -18,14 +18,14 @@ export default function ProccessingPage() {
 			try {
 				const { data } = await axios.post(`/api/payments`, {
 					title,
-					amount,
+					amount: amount,
 					user_id: user?.id as string,
 				});
 				toast.success('Payment created successfully');
 
 				router.push(`/success?payment_id=${data._id}`);
 			} catch (error: any) {
-				toast.error('Something went wrong', {
+				toast.error('Something went wrong while creating payment', {
 					description: error.message,
 				});
 				router.push('/');

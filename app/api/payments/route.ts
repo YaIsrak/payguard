@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
 		const newPayment = await Payment.create({
 			title,
-			amount,
+			amount: Number(amount),
 			user_id,
 		});
 

@@ -6,6 +6,7 @@ import { useUser } from '@clerk/nextjs';
 import { DialogTrigger } from '@radix-ui/react-dialog';
 import axios from 'axios';
 import { Eye, Loader, UploadIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import StatusBadge from './StatusBadge';
@@ -25,6 +26,7 @@ export default function DocumentUpload({ payment }: { payment: Payment }) {
 	const [open, setOpen] = useState(false);
 	const { user } = useUser();
 	const [document, setDocument] = useState<Document | null>();
+	const router = useRouter();
 
 	useEffect(() => {
 		const fetchDocuments = async () => {
@@ -68,7 +70,7 @@ export default function DocumentUpload({ payment }: { payment: Payment }) {
 				});
 
 			if (error) {
-				toast.error('Failed to upload', {
+				toast.error('Failed to upload on supabase', {
 					description: error.message,
 				});
 			}
@@ -84,9 +86,10 @@ export default function DocumentUpload({ payment }: { payment: Payment }) {
 					.then(() => {
 						setOpen(false);
 						toast.success('Document uploaded successfully');
+						router.refresh();
 					})
 					.catch((error) => {
-						toast.error('Something went wrong', {
+						toast.error('Failed to update database for document', {
 							description: error.message,
 						});
 					});

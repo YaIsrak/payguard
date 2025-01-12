@@ -67,6 +67,8 @@ export default function AdminPaymentsList() {
 							payment={payment}
 						/>
 					))}
+
+					{payments?.length === 0 && <p>No payments found</p>}
 				</TableBody>
 			</Table>
 		</div>

@@ -33,6 +33,8 @@ export default async function PaymentsList() {
 							payment={payment}
 						/>
 					))}
+
+					{payments?.length === 0 && <p>No payments found</p>}
 				</TableBody>
 			</Table>
 		</div>
