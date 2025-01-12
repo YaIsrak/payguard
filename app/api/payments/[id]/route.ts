@@ -31,7 +31,7 @@ export async function PUT(
 		);
 
 		revalidatePath('/');
-		return NextResponse.json(updatedPayment);
+		return NextResponse.json(replaceMongoIdInObject(updatedPayment));
 	} catch (error) {
 		return NextResponse.json(
 			{ message: 'Something went wrong', error },

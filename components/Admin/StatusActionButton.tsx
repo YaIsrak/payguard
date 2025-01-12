@@ -7,6 +7,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select';
+import { sendEmail } from '@/lib/action';
 import { Payment, Status } from '@/types/types';
 import axios from 'axios';
 import { Check, Edit2Icon, Loader } from 'lucide-react';
@@ -25,7 +26,14 @@ export default function StatusActionButton({ payment }: { payment: Payment }) {
 	const onStatusChange = async () => {
 		setLoading(true);
 		try {
-			await axios.put(`/api/payments/${payment.id}`, { status });
+			const { data }: { data: Payment } = await axios.put(
+				`/api/payments/${payment.id}`,
+				{
+					status,
+				},
+			);
+
+			await sendEmail(data.user_id, data, status);
 
 			toast.success('Status changed successfully');
 			router.refresh();

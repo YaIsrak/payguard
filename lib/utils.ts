@@ -17,6 +17,8 @@ export const env = {
 	NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL as string,
 	NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env
 		.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
+	RESEND_API_KEY: process.env.RESEND_API_KEY as string,
+	RESEND_API_SECRET: process.env.RESEND_API_SECRET as string,
 };
 
 interface MongoDBObject {
@@ -62,3 +64,5 @@ export const convertDate = (date: Date) => {
 
 	return newDate;
 };
+
+// export const resend = new Resend(env.RESEND_API_KEY);
