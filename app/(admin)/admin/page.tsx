@@ -1,12 +1,17 @@
 import AdminPaymentsList from '@/components/Admin/AdminPaymentList';
 import FallbackLoading from '@/components/FallbackLoading';
+import SummaryCard from '@/components/SummaryCard';
+import TotalAmountCard from '@/components/TotalAmountCard';
+import { getAllPayments } from '@/lib/query';
+import { Payment } from '@/types/types';
 import { Suspense } from 'react';
 
 export default async function AdminPage() {
+	const payments: Payment[] = await getAllPayments();
+
 	return (
 		<main className='container mx-auto px-2 md:px-4'>
-			<div className='py-[5vmin]'>
-				{/* Table */}
+			<div className='py-[5vmin] space-y-4'>
 				<div className='p-4 border border-gray-300 rounded-xl'>
 					<div>
 						<h1 className='text-2xl font-semibold'>Payment Requests</h1>
@@ -18,6 +23,11 @@ export default async function AdminPage() {
 					<Suspense fallback={<FallbackLoading />}>
 						<AdminPaymentsList />
 					</Suspense>
+				</div>
+
+				<div className='grid grid-cols-3 gap-4'>
+					<TotalAmountCard payments={payments} />
+					<SummaryCard payments={payments} />
 				</div>
 			</div>
 		</main>

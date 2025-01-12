@@ -5,9 +5,9 @@ import { NextResponse } from 'next/server';
 
 export async function PUT(
 	req: Request,
-	{ params }: { params: { id: string } },
+	{ params }: { params: Promise<{ id: string }> },
 ) {
-	const { id } = params;
+	const { id } = await params;
 	const { status } = await req.json();
 
 	if (status !== 'pending' && status !== 'approved' && status !== 'rejected') {
@@ -41,9 +41,9 @@ export async function PUT(
 
 export async function DELETE(
 	req: Request,
-	{ params }: { params: { id: string } },
+	{ params }: { params: Promise<{ id: string }> },
 ) {
-	const { id } = params;
+	const { id } = await params;
 	if (!id) {
 		return NextResponse.json(
 			{ message: 'Payment ID is required' },

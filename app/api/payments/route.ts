@@ -3,6 +3,8 @@ import { Payment } from '@/lib/models/payment.model';
 import { replaceMongoIdInArray } from '@/lib/utils';
 import { NextResponse } from 'next/server';
 
+type sort = 'asc' | 'desc';
+
 export async function POST(req: Request) {
 	const { title, amount, user_id } = await req.json();
 
@@ -36,6 +38,8 @@ export async function GET(req: Request) {
 	const url = new URL(req.url);
 	const user_id = url.searchParams.get('user_id');
 
+	const sortParam = url.searchParams.get('sort') || 'desc';
+
 	try {
 		await connectDB();
 
@@ -43,7 +47,9 @@ export async function GET(req: Request) {
 			const payments = await Payment.find({ user_id });
 			return NextResponse.json(replaceMongoIdInArray(payments));
 		} else {
-			const payments = await Payment.find();
+			const payments = await Payment.find().sort({
+				created_at: sortParam as sort,
+			});
 			return NextResponse.json(replaceMongoIdInArray(payments));
 		}
 	} catch (error) {

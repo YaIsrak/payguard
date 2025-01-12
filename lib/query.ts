@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { env } from './utils';
 
-export async function getAllPayments() {
+export async function getAllPayments(sort: 'asc' | 'desc' = 'desc') {
 	try {
-		const { data } = await axios.get(`${env.BASE_URL}/api/payments`);
+		const { data } = await axios.get(
+			`${env.BASE_URL}/api/payments?sort=${sort}`,
+		);
 		return data;
 	} catch (error) {
 		// eslint-disable-next-line no-console

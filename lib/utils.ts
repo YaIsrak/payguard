@@ -52,3 +52,13 @@ export const replaceMongoIdInObject = (obj: any) => {
 export const convertToSubCurrency = (amount: number, factor: number = 100) => {
 	return Math.round(amount * factor);
 };
+
+export const convertDate = (date: Date) => {
+	const newDate = new Date(date).toLocaleDateString(undefined, {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
+
+	return newDate;
+};

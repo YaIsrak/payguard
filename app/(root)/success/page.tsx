@@ -5,7 +5,10 @@ export default async function SuccessPage({
 }) {
 	const { payment_id } = await searchParams;
 
-	console.log(payment_id);
-
-	return <div>SuccessPage</div>;
+	return (
+		<div>
+			SuccessPage
+			{payment_id}
+		</div>
+	);
 }
