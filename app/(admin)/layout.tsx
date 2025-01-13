@@ -1,3 +1,4 @@
+import Navbar from '@/components/layout/Navbar';
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { toast } from 'sonner';
@@ -20,5 +21,10 @@ export default async function AuthLayout({
 		toast.error('You do not have permission to access this page');
 	}
 
-	return <>{children}</>;
+	return (
+		<>
+			<Navbar />
+			{children}
+		</>
+	);
 }

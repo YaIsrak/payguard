@@ -104,7 +104,7 @@ export default function DocumentUpload({ payment }: { payment: Payment }) {
 	};
 
 	return (
-		<>
+		<span>
 			{document ? (
 				<Dialog>
 					<DialogTrigger asChild>
@@ -181,6 +181,6 @@ export default function DocumentUpload({ payment }: { payment: Payment }) {
 					</DialogContent>
 				</Dialog>
 			)}
-		</>
+		</span>
 	);
 }
