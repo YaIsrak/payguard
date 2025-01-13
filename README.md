@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Payguard
 
-## Getting Started
+Payment Tracking and Verification System
 
-First, run the development server:
+### Project Setup Instructions
+
+Clone the repository: git clone https://github.com/YaIsrak/payguard.git
+
+Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+or
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev or yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### API Details
 
-## Learn More
+API endpoint:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+/api
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+API routes:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+/api/payments: Handles payment-related operations
+/api/payments/[id]: Handles single-payment-related operations
+/api/documents: Handles document-related operations
+/api/documents/[id]: Handles single-document-related operations
+/api/checkout: For handle Stripe payment
+```
 
-## Deploy on Vercel
+Environment Variables Required
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+BASE_URL=
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+MONGO_URI=
+
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+
+RESEND_API_KEY=
+
+```
+
+Test User/Admin Credentials
+
+```bash
+## Test User
+Email: user@test.com
+Password: user@42253
+
+## Test admin:
+Email: admin@test.com
+Password: admin@42253
+```
+
+Tech Stack:
+
+-  MongoDB - With Mongose
+-  Clerk - Authentication
+-  Stripe - Payment Processing
+-  Resend - Email Sending
+
+Other libraries and tools:
+
+-  Axios
+-  React Hook Form
+-  Zod
+-  Lucide React
