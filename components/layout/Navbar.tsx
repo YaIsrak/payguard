@@ -8,7 +8,7 @@ export default async function Navbar() {
 	const user = await currentUser();
 
 	return (
-		<nav className='fixed top-0 left-0 right-0 z-10 p-4 bg-white/40 backdrop-blur-sm border-b border-gray-200'>
+		<nav className='fixed top-0 left-0 right-0 z-10 p-4 bg-white/40 backdrop-blur-lg border-b border-gray-200'>
 			<div className='container mx-auto flex items-center justify-between'>
 				{/* Left */}
 				<Link

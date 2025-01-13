@@ -26,7 +26,7 @@ export default async function AdminPage() {
 					</Suspense>
 				</div>
 
-				<div className='grid grid-cols-3 gap-4'>
+				<div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 					<TotalAmountCard payments={payments} />
 					<SummaryCard payments={payments} />
 				</div>

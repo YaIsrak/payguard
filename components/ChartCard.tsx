@@ -6,7 +6,7 @@ import { ChartConfig, ChartContainer } from './ui/chart';
 
 export default function ChartCard({ payments }: { payments: Payment[] }) {
 	const chartData = payments.map((payment) => ({
-		date: new Date(payment.created_at).toISOString().split('T')[0], // Extract date part
+		date: new Date(payment.created_at).toISOString().split('T')[0],
 		title: payment.title,
 		amount: payment.amount,
 	}));
