@@ -1,3 +1,4 @@
+import DownloadRecipt from '@/components/DownloadRecipt';
 import { Button } from '@/components/ui/button';
 import {
 	Card,
@@ -21,7 +22,9 @@ export default async function SuccessPage({
 	const paymentData: Payment = await getPaymentById(payment_id as string);
 
 	return (
-		<div className='min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4'>
+		<main
+			className='min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4'
+			id='receipt'>
 			<div className='w-full max-w-md'>
 				<Card className='bg-white shadow-xl'>
 					<CardHeader className='text-center'>
@@ -62,8 +65,11 @@ export default async function SuccessPage({
 							</div>
 						</div>
 					</CardContent>
-					<CardFooter className='flex justify-center'>
-						<Button asChild>
+					<CardFooter className='flex justify-center flex-col gap-2'>
+						<DownloadRecipt />
+						<Button
+							asChild
+							size='sm'>
 							<Link href='/'>
 								Back to Home
 								<ArrowRight className='ml-2 h-4 w-4' />
@@ -72,6 +78,6 @@ export default async function SuccessPage({
 					</CardFooter>
 				</Card>
 			</div>
-		</div>
+		</main>
 	);
 }
