@@ -49,12 +49,12 @@ export default function DocumentUpload({ payment }: { payment: Payment }) {
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files;
 		if (files && files[0]) {
+			setFile(files[0]);
 			if (files[0].size > 5 * 1024 * 1024) {
 				toast.error('File size must be less than 5MB');
 				setFile(null);
 				return;
 			}
-			setFile(files[0]);
 		}
 	};
 
